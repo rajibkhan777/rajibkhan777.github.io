@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Healthguide360 – TikTok connect</title>
+<style>
+  body { font-family: system-ui, sans-serif; background: #f6f8f6; color: #1b3a1d; display: grid; place-items: center; min-height: 100vh; margin: 0; padding: 16px; }
+  .box { max-width: 420px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>Healthguide360</h1>
+  <p id="msg">TikTok সংযোগ সম্পন্ন হচ্ছে… / Finishing TikTok connection…</p>
+</div>
+<script>
+  // This page only forwards TikTok's one-time login code to the owner's own
+  // n8n running on the same computer (localhost). It stores nothing.
+  var q = window.location.search;
+  if (q && q.indexOf('code=') !== -1) {
+    window.location.replace('http://localhost:5678/webhook/tiktok-oauth' + q);
+  } else {
+    document.getElementById('msg').textContent = 'কোনো কোড পাওয়া যায়নি। / No code received.';
+  }
+</script>
+</body>
+</html>
